@@ -1,6 +1,7 @@
 package stringmanipulation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,10 +56,20 @@ public class TestJoining {
 		final List<String> list = new ArrayList<>();
 
 		final String result1 = ex.joinWithComma(list);
-		assertEquals(result1 == null || result1.isEmpty(), true);
+		assertEquals(result1, "");
 
 		list.add("1");
 		final String result2 = ex.joinWithComma(list);
 		assertEquals(result2, "1");
+	}
+
+	/**
+	 * リストがnullの場合
+	 */
+	@Test
+	public void testJoiningCase4() {
+		final Joining ex = new Joining();
+		final String result = ex.joinWithComma(null);
+		assertNull(result);
 	}
 }
